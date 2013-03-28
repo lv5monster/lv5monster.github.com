@@ -4,7 +4,7 @@
   <title><![CDATA[LV5 Blog]]></title>
   <link href="http://lv5monster.github.com/atom.xml" rel="self"/>
   <link href="http://lv5monster.github.com/"/>
-  <updated>2013-03-27T12:14:54+08:00</updated>
+  <updated>2013-03-29T00:42:21+08:00</updated>
   <id>http://lv5monster.github.com/</id>
   <author>
     <name><![CDATA[lv5monster]]></name>
@@ -12,5 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[octopress建站纪录]]></title>
+    <link href="http://lv5monster.github.com/blog/2013/03/28/octopressjian-zhan-ji-lu/"/>
+    <updated>2013-03-28T22:44:00+08:00</updated>
+    <id>http://lv5monster.github.com/blog/2013/03/28/octopressjian-zhan-ji-lu</id>
+    <content type="html"><![CDATA[<p>折腾了几天，终于把博客的雏型弄出来了，第一篇博客就来纪录下建站的过程吧。博客是在mac osx下，用octopress框架搭在gihub的服务器上。</p>
+
+<!-- more -->
+
+
+<h3>第一步 安装ruby</h3>
+
+<p>octopress用的是ruby，所以第一步就是得安装ruby，个人觉得不是版本越新越好，因为装的是octopress，所以先上它的官网看下，一般都会有提到怎么安装。所以虽然2.0.0出了，我还是决定安装1.9.3的版本。（要先安装rvm，ruby的版本管理器）</p>
+
+<pre><code>rvm install 1.9.3
+rvm 1.9.3 --default
+rvm requirements run force
+rvm pkg remove
+rvm reinstall all --force
+</code></pre>
+
+<p><strong>ruby -v</strong>检查下版本对不对，后面几条指令是安装信赖库。有些信赖库默认不安装但是用需要用，一开始折腾了我半天。</p>
+
+<h3>第二步 安装octopress</h3>
+
+<p>申请github帐号就不用说了，在github上新建一个repo，名字一定是yourname/yourname.github.com。</p>
+
+<p>把octopress安装到本地，然后把插件给装了。</p>
+
+<pre><code>git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+gem install bundler
+rake install
+</code></pre>
+
+<h3>第三步 生成网站</h3>
+
+<p>这里还有个准备工作要先做，设置ssh keys</p>
+
+<pre><code>ssh-keygen -t rsa -C "your_email@whatever.com"
+**然后一直回车就行了**
+</code></pre>
+
+<p>找到~/.ssh/id_rsa.pub，把里面的内容复制到github的account settings->SSH Keys，保存。</p>
+
+<pre><code>rake setup_github_pages
+**按提示输入git@github.com:yourname/yourname.github.com**
+rake install    //安装
+rake generate   //生成
+rake deploy     //提交到服务器
+</code></pre>
+
+<p>行了，等个10分钟左右就可以用yourname.github.com登陆了，如果想在本地预览可以输入<strong>rake preview</strong>，地址是：127.0.0.1:4000。随时可以准备开始码字了，<strong>rake new_post[&#8216;yourtitle&#8217;]</strong>生成一个markdown文件，直接在本地改就可以。</p>
+
+<h3>第四步 个性化设置</h3>
+
+<p>这一步没什么好说的了，因人而异，无非就是把主题下到octopress/.theme文件夹里面，然后<strong>install [&#8216;the theme&#8217;]</strong>，改得最多得设置是在<strong>_config.yml</strong>里面，用户名网站名还有第三方插件都可以直接在这上面设置，建议把disqus和google analytcs都用上，不用白不用嘛。如果想增加个about me什么的，可以在<strong>octopress/source/_include/custom/navigation.html</strong>上面增加，然后增加相应的页面。</p>
+]]></content>
+  </entry>
   
 </feed>
