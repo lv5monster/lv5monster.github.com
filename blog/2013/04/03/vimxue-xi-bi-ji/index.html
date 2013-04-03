@@ -1,0 +1,258 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Vim学习笔记 - LV5 Blog</title>
+    <meta name="author" content="lv5monster">
+    
+	<meta name="description" content="As Abraham Lincoln once asid "If I had eight hours to chop down a tree, I'd spend six hours sharpending my axe." 正所谓工欲善其事，必先利其器。最近对文本文件的编辑需求增多了， &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="LV5 Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+    <link href='http://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
+
+    <!-- remove or comment it to disable ajaxification -->   
+    <script src="/javascripts/ajaxify.js"></script>
+   
+    
+    
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-39615015-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        lv5monster
+    </div>
+</h1>
+<br>
+
+<ul id="social-links" style="text-align:center">
+  
+  <!-- GitHub -->
+  <li>
+  <a href="https://github.com/lv5monster" class="github" title="Github"></a>
+  </li>
+  
+  
+  
+  
+  <!-- Twitter -->
+  <li>
+  <a href="http://www.twitter.com/lv5monster" class="twitter" title="Twitter"></a>
+  </li>
+    
+    
+    <!-- Sina -->
+    <li>
+        <a href="http://www.weibo.com/lv5monster" class="sina" title="sina"></a>
+    </li>
+    
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/blog/archives/index.html">Archives</a></li>
+    <li id="ajax"><a href="/about.html">About</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form method="get" action="/search.html" id="search">
+            <input name="query" type="text" placeholder="Search..." x-webkit-speech />
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
+
+</header>
+
+<div id="toload">
+<!-- begin toload --> 
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">Vim学习笔记</h2>
+	<div class="entry-content"><p><strong><code>As Abraham Lincoln once asid "If I had eight hours to chop down a tree, I'd spend six hours sharpending my axe."</code></strong></p>
+
+<p>正所谓工欲善其事，必先利其器。最近对文本文件的编辑需求增多了，目前就只有两个可以用的工具，一个是xcode一个是系统自带的编辑器，两个用起来都不是很爽，于是踏上了vim这条不归路。</p>
+
+<!--more-->
+
+
+<h2>一 安装MacVim</h2>
+
+<p>网上有很多安装包的下载，为了保证用的是最新版，我决定自己编译。首先从<a href="https://github.com/applidium/Vim">github</a>直接下载下来，然后根据不同的操作系统查看各自的readme，根据readme提示打开相应的编译选项，然后<strong>make</strong>，done！</p>
+
+<p>得到app文件后，把它复制到应用程序里面，接着弄几个软链接到/bin里面。</p>
+
+<pre><code>ln -s /usr/local/src/macvim/src/MacVim/build/Release/MacVim.app /Applications/MacVim.app
+ln -s /usr/local/src/macvim/src/MacVim/mvim /usr/local/bin/mvim
+ln -s /usr/local/bin/mvim /usr/local/bin/mvimdiff
+ln -s /usr/local/bin/mvim /usr/local/bin/vim
+ln -s /usr/local/bin/mvim /usr/local/bin/vimdiff
+</code></pre>
+
+<p>现在就可以直接在终端上面把vim呼叫出来了。系统自带也有个vim，不过看version是和macvim有点不同，所以把它替换之。</p>
+
+<h2>二 安装插件</h2>
+
+<p>vim很强大，但是有了插件之后更是如虎添翼。插件非常多，我就先装着这些，后面需求变了再慢慢更新插件好了。</p>
+
+<pre><code>git submodule add git://github.com/tpope/vim-pathogen.git  bundle/vim-pathogen  //管理插件的插件－ －！
+git submodule add git://github.com/scrooloose/nerdtree.git  bundle/nerdtree  //生成目录树git submodule add git://git.wincent.com/command-t.git  bundle/command-t  //搜索目录下的文件
+git submodule add git://github.com/SirVer/ultisnips.git  bundle/ultisnips  //生成代码片段
+git submodule add git://github.com/ervandew/supertab.git  bundle/supertab  //增强tab
+git submodule add git://github.com/majutsushi/tagbar  bunbundle/tagbar  //生成函数、变量列表
+git submodule add git://github.com/scrooloose/syntastic  bunbundle/syntastic  //保存文件时检查语法
+git submodule add git://github.com/altercation/vim-colors-solarized  bunbundle/vim-colors-solarized  //很受欢迎的颜色配色方案
+git submodule add git://github.com/Raimondi / delimitMate  bunbundle/delimitMate  //生成成对的括号
+git submodule add git://github.com/vim-scripts/a.vim  bunbundle/a  //在代码文件和头文件间切换
+git submodule add git://github.com/Rip-Rip / clang_complete  bunbundle/clang_complete  //自动代码补全
+git submodule add git://github.com/Shougo / neocomplcache  bunbundle/neocomplcache  //关键字、文件路径等补全
+git submodule add git://github.com/syo-manga / neocomplcache-clang_complete  bunbundle/neocomplcache-clang_complete  //看名字就知道了，解决上面两个插件的冲突
+git submodule add git://github.com/magic-dot-files / TagHighlight  bunbundle/TagHighlight  //类名函数名变量名关键字高亮
+git submodule add git://github.com/Lokaltog / vim-powerline  bunbundle/vim-powerline  //增强状态栏
+</code></pre>
+
+<p>折腾啊。。。。</p>
+
+<h2>三 使用Vim</h2>
+
+<p>使用Vim的时候要强制自己不能用鼠标，不能用上下左右的方向键，尽可能习惯Vim的快捷键，简单介绍下Vim下的操作吧。</p>
+
+<p>Vim有3种模式：</p>
+
+<ul>
+<li>Normal mode</li>
+<li>Insert mode</li>
+<li>Visual mode</li>
+</ul>
+
+
+<p>应该要把最多的时间方在Normal mode上面，这个才是常态，不要在Insert mode里面用方向键去找你想要的东西，大忌啊。移动方向应该使用<strong>h-左</strong>，<strong>j-下</strong>，<strong>k-上</strong>，<strong>l-下</strong>，从<strong>N</strong>模式进入<strong>I</strong>模式有几种方法，下面摘自《A Byte of Vim》：</p>
+
+<pre><code>i       insert text just before the cursor
+I       insert text at the start of the line
+a       append text just after cursor
+A       append text at the end of the line
+o       open a new line below
+O       open a new line above
+s       substitute the current character
+S       substitute the current line
+r       replace the current character
+R       replace continuous characters
+</code></pre>
+
+<p>然后还有一些快速移动的命令，常用的命令等，网上资料太多了，其中令我觉得很犀利的一个是它的还原功能（undo／redo）：</p>
+
+<pre><code>:earlier 4m     //undo到4分钟前
+:later   45s    //redo45秒
+:undo    5      //undo5个操作
+:undolist       //列出所有undo操作，而且它的list可以没上限的！
+</code></pre>
+
+<p>最近折腾这些折腾得太厉害了，有点本末倒置得感觉，要赶紧回归了。
+最后附上我<a href="https://gist.github.com/lv5monster/5301722">gist</a>的链接。</p>
+</div>
+
+<div class="meta">
+	
+</div>
+</article>
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+
+    </div>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2013
+
+    lv5monster
+. Powered by <a href="http://octopress.org">Octopress</a> | 
+    Theme <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
+
+
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'lv5blog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://lv5monster.github.com/blog/2013/04/03/vimxue-xi-bi-ji/';
+        var disqus_url = 'http://lv5monster.github.com/blog/2013/04/03/vimxue-xi-bi-ji/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
+</body>
+</html>

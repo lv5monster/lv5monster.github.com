@@ -4,7 +4,7 @@
   <title><![CDATA[LV5 Blog]]></title>
   <link href="http://lv5monster.github.com/atom.xml" rel="self"/>
   <link href="http://lv5monster.github.com/"/>
-  <updated>2013-03-31T12:16:43+08:00</updated>
+  <updated>2013-04-03T22:32:27+08:00</updated>
   <id>http://lv5monster.github.com/</id>
   <author>
     <name><![CDATA[lv5monster]]></name>
@@ -12,6 +12,95 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vim学习笔记]]></title>
+    <link href="http://lv5monster.github.com/blog/2013/04/03/vimxue-xi-bi-ji/"/>
+    <updated>2013-04-03T19:11:00+08:00</updated>
+    <id>http://lv5monster.github.com/blog/2013/04/03/vimxue-xi-bi-ji</id>
+    <content type="html"><![CDATA[<p><strong><code>As Abraham Lincoln once asid "If I had eight hours to chop down a tree, I'd spend six hours sharpending my axe."</code></strong></p>
+
+<p>正所谓工欲善其事，必先利其器。最近对文本文件的编辑需求增多了，目前就只有两个可以用的工具，一个是xcode一个是系统自带的编辑器，两个用起来都不是很爽，于是踏上了vim这条不归路。</p>
+
+<!--more-->
+
+
+<h2>一 安装MacVim</h2>
+
+<p>网上有很多安装包的下载，为了保证用的是最新版，我决定自己编译。首先从<a href="https://github.com/applidium/Vim">github</a>直接下载下来，然后根据不同的操作系统查看各自的readme，根据readme提示打开相应的编译选项，然后<strong>make</strong>，done！</p>
+
+<p>得到app文件后，把它复制到应用程序里面，接着弄几个软链接到/bin里面。</p>
+
+<pre><code>ln -s /usr/local/src/macvim/src/MacVim/build/Release/MacVim.app /Applications/MacVim.app
+ln -s /usr/local/src/macvim/src/MacVim/mvim /usr/local/bin/mvim
+ln -s /usr/local/bin/mvim /usr/local/bin/mvimdiff
+ln -s /usr/local/bin/mvim /usr/local/bin/vim
+ln -s /usr/local/bin/mvim /usr/local/bin/vimdiff
+</code></pre>
+
+<p>现在就可以直接在终端上面把vim呼叫出来了。系统自带也有个vim，不过看version是和macvim有点不同，所以把它替换之。</p>
+
+<h2>二 安装插件</h2>
+
+<p>vim很强大，但是有了插件之后更是如虎添翼。插件非常多，我就先装着这些，后面需求变了再慢慢更新插件好了。</p>
+
+<pre><code>git submodule add git://github.com/tpope/vim-pathogen.git  bundle/vim-pathogen  //管理插件的插件－ －！
+git submodule add git://github.com/scrooloose/nerdtree.git  bundle/nerdtree  //生成目录树git submodule add git://git.wincent.com/command-t.git  bundle/command-t  //搜索目录下的文件
+git submodule add git://github.com/SirVer/ultisnips.git  bundle/ultisnips  //生成代码片段
+git submodule add git://github.com/ervandew/supertab.git  bundle/supertab  //增强tab
+git submodule add git://github.com/majutsushi/tagbar  bunbundle/tagbar  //生成函数、变量列表
+git submodule add git://github.com/scrooloose/syntastic  bunbundle/syntastic  //保存文件时检查语法
+git submodule add git://github.com/altercation/vim-colors-solarized  bunbundle/vim-colors-solarized  //很受欢迎的颜色配色方案
+git submodule add git://github.com/Raimondi / delimitMate  bunbundle/delimitMate  //生成成对的括号
+git submodule add git://github.com/vim-scripts/a.vim  bunbundle/a  //在代码文件和头文件间切换
+git submodule add git://github.com/Rip-Rip / clang_complete  bunbundle/clang_complete  //自动代码补全
+git submodule add git://github.com/Shougo / neocomplcache  bunbundle/neocomplcache  //关键字、文件路径等补全
+git submodule add git://github.com/syo-manga / neocomplcache-clang_complete  bunbundle/neocomplcache-clang_complete  //看名字就知道了，解决上面两个插件的冲突
+git submodule add git://github.com/magic-dot-files / TagHighlight  bunbundle/TagHighlight  //类名函数名变量名关键字高亮
+git submodule add git://github.com/Lokaltog / vim-powerline  bunbundle/vim-powerline  //增强状态栏
+</code></pre>
+
+<p>折腾啊。。。。</p>
+
+<h2>三 使用Vim</h2>
+
+<p>使用Vim的时候要强制自己不能用鼠标，不能用上下左右的方向键，尽可能习惯Vim的快捷键，简单介绍下Vim下的操作吧。</p>
+
+<p>Vim有3种模式：</p>
+
+<ul>
+<li>Normal mode</li>
+<li>Insert mode</li>
+<li>Visual mode</li>
+</ul>
+
+
+<p>应该要把最多的时间方在Normal mode上面，这个才是常态，不要在Insert mode里面用方向键去找你想要的东西，大忌啊。移动方向应该使用<strong>h-左</strong>，<strong>j-下</strong>，<strong>k-上</strong>，<strong>l-下</strong>，从<strong>N</strong>模式进入<strong>I</strong>模式有几种方法，下面摘自《A Byte of Vim》：</p>
+
+<pre><code>i       insert text just before the cursor
+I       insert text at the start of the line
+a       append text just after cursor
+A       append text at the end of the line
+o       open a new line below
+O       open a new line above
+s       substitute the current character
+S       substitute the current line
+r       replace the current character
+R       replace continuous characters
+</code></pre>
+
+<p>然后还有一些快速移动的命令，常用的命令等，网上资料太多了，其中令我觉得很犀利的一个是它的还原功能（undo／redo）：</p>
+
+<pre><code>:earlier 4m     //undo到4分钟前
+:later   45s    //redo45秒
+:undo    5      //undo5个操作
+:undolist       //列出所有undo操作，而且它的list可以没上限的！
+</code></pre>
+
+<p>最近折腾这些折腾得太厉害了，有点本末倒置得感觉，要赶紧回归了。
+最后附上我<a href="https://gist.github.com/lv5monster/5301722">gist</a>的链接。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[octopress建站纪录]]></title>
@@ -23,7 +112,7 @@
 <!-- more -->
 
 
-<h3>第一步 安装ruby</h3>
+<h2>第一步 安装ruby</h2>
 
 <p>octopress用的是ruby，所以第一步就是得安装ruby，个人觉得不是版本越新越好，因为装的是octopress，所以先上它的官网看下，一般都会有提到怎么安装。所以虽然2.0.0出了，我还是决定安装1.9.3的版本。（要先安装rvm，ruby的版本管理器）</p>
 
@@ -36,7 +125,7 @@ rvm reinstall all --force
 
 <p><strong>ruby -v</strong>检查下版本对不对，后面几条指令是安装信赖库。有些信赖库默认不安装但是用需要用，一开始折腾了我半天。</p>
 
-<h3>第二步 安装octopress</h3>
+<h2>第二步 安装octopress</h2>
 
 <p>申请github帐号就不用说了，在github上新建一个repo，名字一定是yourname/yourname.github.com。</p>
 
@@ -48,7 +137,7 @@ gem install bundler
 rake install
 </code></pre>
 
-<h3>第三步 生成网站</h3>
+<h2>第三步 生成网站</h2>
 
 <p>这里还有个准备工作要先做，设置ssh keys</p>
 
@@ -67,7 +156,7 @@ rake deploy     //提交到服务器
 
 <p>行了，等个10分钟左右就可以用yourname.github.com登陆了，如果想在本地预览可以输入<strong>rake preview</strong>，地址是：127.0.0.1:4000。随时可以准备开始码字了，<strong>rake new_post[&#8216;yourtitle&#8217;]</strong>生成一个markdown文件，直接在本地改就可以。</p>
 
-<h3>第四步 个性化设置</h3>
+<h2>第四步 个性化设置</h2>
 
 <p>这一步没什么好说的了，因人而异，无非就是把主题下到octopress/.theme文件夹里面，然后<strong>install [&#8216;the theme&#8217;]</strong>，改得最多得设置是在<strong>_config.yml</strong>里面，用户名网站名还有第三方插件都可以直接在这上面设置，建议把disqus和google analytcs都用上，不用白不用嘛。如果想增加个about me什么的，可以在<strong>octopress/source/_include/custom/navigation.html</strong>上面增加，然后增加相应的页面。</p>
 ]]></content>
