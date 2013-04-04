@@ -4,7 +4,7 @@
   <title><![CDATA[LV5 Blog]]></title>
   <link href="http://lv5monster.github.com/atom.xml" rel="self"/>
   <link href="http://lv5monster.github.com/"/>
-  <updated>2013-04-04T10:28:25+08:00</updated>
+  <updated>2013-04-04T10:51:03+08:00</updated>
   <id>http://lv5monster.github.com/</id>
   <author>
     <name><![CDATA[lv5monster]]></name>
@@ -44,20 +44,21 @@ ln -s /usr/local/bin/mvim /usr/local/bin/vimdiff
 
 <p>vim很强大，但是有了插件之后更是如虎添翼。插件非常多，我就先装着这些，后面需求变了再慢慢更新插件好了。</p>
 
-<pre><code>git submodule add git://github.com/tpope/vim-pathogen.git  bundle/vim-pathogen  //管理插件的插件－ －！
-git submodule add git://github.com/scrooloose/nerdtree.git  bundle/nerdtree  //生成目录树git submodule add git://git.wincent.com/command-t.git  bundle/command-t  //搜索目录下的文件
-git submodule add git://github.com/SirVer/ultisnips.git  bundle/ultisnips  //生成代码片段
-git submodule add git://github.com/ervandew/supertab.git  bundle/supertab  //增强tab
-git submodule add git://github.com/majutsushi/tagbar  bunbundle/tagbar  //生成函数、变量列表
-git submodule add git://github.com/scrooloose/syntastic  bunbundle/syntastic  //保存文件时检查语法
-git submodule add git://github.com/altercation/vim-colors-solarized  bunbundle/vim-colors-solarized  //很受欢迎的颜色配色方案
-git submodule add git://github.com/Raimondi / delimitMate  bunbundle/delimitMate  //生成成对的括号
-git submodule add git://github.com/vim-scripts/a.vim  bunbundle/a  //在代码文件和头文件间切换
-git submodule add git://github.com/Rip-Rip / clang_complete  bunbundle/clang_complete  //自动代码补全
-git submodule add git://github.com/Shougo / neocomplcache  bunbundle/neocomplcache  //关键字、文件路径等补全
-git submodule add git://github.com/syo-manga / neocomplcache-clang_complete  bunbundle/neocomplcache-clang_complete  //看名字就知道了，解决上面两个插件的冲突
-git submodule add git://github.com/magic-dot-files / TagHighlight  bunbundle/TagHighlight  //类名函数名变量名关键字高亮
-git submodule add git://github.com/Lokaltog / vim-powerline  bunbundle/vim-powerline  //增强状态栏
+<pre><code>git submodule add git://github.com/tpope/vim-pathogen.git                   bundle/vim-pathogen                     //管理插件的插件－ －！
+git submodule add git://github.com/scrooloose/nerdtree.git                  bundle/nerdtree                         //生成目录树
+git submodule add git://git.wincent.com/command-t.git                       bundle/command-t                        //搜索目录下的文件
+git submodule add git://github.com/SirVer/ultisnips.git                     bundle/ultisnips                        //生成代码片段
+git submodule add git://github.com/ervandew/supertab.git                    bundle/supertab                         //增强tab
+git submodule add git://github.com/majutsushi/tagbar                        bunbundle/tagbar                        //生成函数、变量列表
+git submodule add git://github.com/scrooloose/syntastic                     bunbundle/syntastic                     //保存文件时检查语法
+git submodule add git://github.com/altercation/vim-colors-solarized         bunbundle/vim-colors-solarized          //很受欢迎的颜色配色方案
+git submodule add git://github.com/Raimondi/delimitMate                     bunbundle/delimitMate                   //生成成对的括号
+git submodule add git://github.com/vim-scripts/a.vim                        bunbundle/a                             //在代码文件和头文件间切换
+git submodule add git://github.com/Rip-Rip/clang_complete                   bunbundle/clang_complete                //自动代码补全
+git submodule add git://github.com/Shougo/neocomplcache                     bunbundle/neocomplcache                 //关键字、文件路径等补全
+git submodule add git://github.com/syo-manga/neocomplcache-clang_complete   bunbundle/neocomplcache-clang_complete  //看名字就知道了，解决上面两个插件的冲突
+git submodule add git://github.com/magic-dot-files/TagHighlight             bunbundle/TagHighlight                  //类名函数名变量名关键字高亮
+git submodule add git://github.com/Lokaltog/vim-powerline                   bunbundle/vim-powerline                 //增强状态栏
 </code></pre>
 
 <p>折腾啊。。。。</p>
