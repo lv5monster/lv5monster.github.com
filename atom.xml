@@ -4,7 +4,7 @@
   <title><![CDATA[LV5 Blog]]></title>
   <link href="http://lv5monster.github.com/atom.xml" rel="self"/>
   <link href="http://lv5monster.github.com/"/>
-  <updated>2013-04-03T22:32:27+08:00</updated>
+  <updated>2013-04-04T10:28:25+08:00</updated>
   <id>http://lv5monster.github.com/</id>
   <author>
     <name><![CDATA[lv5monster]]></name>
@@ -18,7 +18,7 @@
     <link href="http://lv5monster.github.com/blog/2013/04/03/vimxue-xi-bi-ji/"/>
     <updated>2013-04-03T19:11:00+08:00</updated>
     <id>http://lv5monster.github.com/blog/2013/04/03/vimxue-xi-bi-ji</id>
-    <content type="html"><![CDATA[<p><strong><code>As Abraham Lincoln once asid "If I had eight hours to chop down a tree, I'd spend six hours sharpending my axe."</code></strong></p>
+    <content type="html"><![CDATA[<p><strong>As Abraham Lincoln once asid &#8220;If I had eight hours to chop down a tree, I&#8217;d spend six hours sharpending my axe.&#8221;</strong></p>
 
 <p>正所谓工欲善其事，必先利其器。最近对文本文件的编辑需求增多了，目前就只有两个可以用的工具，一个是xcode一个是系统自带的编辑器，两个用起来都不是很爽，于是踏上了vim这条不归路。</p>
 
